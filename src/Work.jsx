@@ -6,6 +6,10 @@ export default function Work() {
     const [todos, setTodos] = useState([])
     const [todoTitle, setTodoTitle] = useState('')
 
+    useEffect(() => {
+      const raw = localStorage.getItem('todos') || "[]";
+      setTodos(JSON.parse(raw))
+    }, [])
 
     useEffect(() => {
       localStorage.setItem('todos', JSON.stringify(todos))
