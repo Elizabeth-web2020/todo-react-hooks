@@ -3,18 +3,28 @@ import TodoList from './TodoList';
 import { Context } from './context';
 
 export default function Work() {
- 
+
+    const [name, setName] = useState([])
     const [todos, setTodos] = useState([])
     const [todoTitle, setTodoTitle] = useState('')
 
     useEffect(() => {
-      const raw = localStorage.getItem('todos') || "[]";
+      setName(prompt('Your name', 'tanya'));
+      console.log(localStorage.getItem(name));
+      const raw = localStorage.getItem(name) || "[]";
+      console.log(raw);
       setTodos(JSON.parse(raw))
     }, [])
 
     useEffect(() => {
-      localStorage.setItem('todos', JSON.stringify(todos))
+        localStorage.setItem(name, JSON.stringify(todos))
     }, [todos])
+
+     useEffect(() => {
+       const newValue = localStorage.getItem(name) || '[]';
+       setTodos(JSON.parse(newValue))
+    }, [name])
+    
 
     const addTodo = event => {
         if (event.key === 'Enter') {
@@ -28,6 +38,11 @@ export default function Work() {
             ])
             setTodoTitle('')
         }
+    }
+
+    const addName = event => {
+      event.preventDefault();
+      setName(prompt('Your name', 'lola'));
     }
 
     const removeTodo = id => {
@@ -48,6 +63,8 @@ export default function Work() {
         toggleTodo, removeTodo
       }}>
         <div className="container">
+          <h4>Hello, {name}</h4>
+          <button onClick={addName}>Log out</button>
           <h1>Todo app</h1>
 
           <div className="input-field">
@@ -61,7 +78,7 @@ export default function Work() {
           </div>
 
           <TodoList todos={todos} />
-      </div>
+        </div>
       </Context.Provider>
     );
 }
