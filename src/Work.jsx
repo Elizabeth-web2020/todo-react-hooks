@@ -10,10 +10,10 @@ export default function Work() {
 
     useEffect(() => {
       setName(prompt('Your name', 'tanya'));
-      console.log(localStorage.getItem(name));
-      const raw = localStorage.getItem(name) || "[]";
-      console.log(raw);
-      setTodos(JSON.parse(raw))
+      // console.log(localStorage.getItem(name));
+      // const raw = localStorage.getItem(name) || "[]";
+      // console.log(raw);
+      // setTodos(JSON.parse(raw))
     }, [])
 
     useEffect(() => {
@@ -64,7 +64,7 @@ export default function Work() {
       }}>
         <div className="container">
           <h4>Hello, {name}</h4>
-          <button onClick={addName}>Log out</button>
+          <button className="logout-btn" onClick={addName}>Log out</button>
           <h1>Todo app</h1>
 
           <div className="input-field">

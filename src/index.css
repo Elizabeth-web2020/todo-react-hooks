@@ -26,4 +26,19 @@ body {
 .todo i {
   z-index: 2;
 }
-
+.logout-btn {
+  width: 100px;
+  padding: 10px;
+  background-color: #fff;
+  color: black;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border: 1px solid darkgrey;
+  margin-top: 10px;
+}
+.logout-btn:hover {
+  background-color: pink;
+}
+.logout-btn:focus {
+  background-color: #fff;
+}
